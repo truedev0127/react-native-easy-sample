@@ -13,31 +13,31 @@ export default function HomeScreen({ navigation }) {
 
   /**
    * Fetch threads from Firestore
-   */
-  useEffect(() => {
-    const unsubscribe = firestore()
-      .collection('THREADS')
-      .orderBy('latestMessage.createdAt', 'desc')
-      .onSnapshot(querySnapshot => {
-        const threads = querySnapshot.docs.map(documentSnapshot => {
-          return {
-            _id: documentSnapshot.id,
-            // give defaults
-            name: '',
+  //  */
+  // useEffect(() => {
+  //   const unsubscribe = firestore()
+  //     .collection('THREADS')
+  //     .orderBy('latestMessage.createdAt', 'desc')
+  //     .onSnapshot(querySnapshot => {
+  //       const threads = querySnapshot.docs.map(documentSnapshot => {
+  //         return {
+  //           _id: documentSnapshot.id,
+  //           // give defaults
+  //           name: '',
 
-            latestMessage: {
-              text: ''
-            },
-            ...documentSnapshot.data()
-          };
-        });
+  //           latestMessage: {
+  //             text: ''
+  //           },
+  //           ...documentSnapshot.data()
+  //         };
+  //       });
 
-        setThreads(threads);
+  //       setThreads(threads);
 
-        if (loading) {
-          setLoading(false);
-        }
-      });
+  //       if (loading) {
+  //         setLoading(false);
+  //       }
+  //     });
 
     /**
      * unsubscribe listener
